@@ -1,4 +1,3 @@
-
 import math
 
 def format_number(value):
