@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% set active_page = 'home' %}
+{% set page_kicker = 'Dashboard' %}
+{% set page_title = 'SmartCalc Pro' %}
+{% block content %}
+<section class="hero glass-card">
+  <div class="hero-copy">
+    <h2>Selamat datang di SmartCalc Pro</h2>
+    <p>Kalkulator modern dengan operasi aritmatika, logika, transformasi bilangan, dan hasil detail.</p>
+  </div>
+  <div class="hero-badge">
+    <i class="bi bi-lightning-charge-fill"></i>
+    <span>Fast • Responsive • Animated</span>
+  </div>
+</section>
+
+<section class="feature-grid">
+  <a href="{{ url_for('arithmetic.arithmetic_page') }}" class="feature-card glass-card sound-click">
+    <div class="feature-icon"><i class="bi bi-calculator-fill"></i></div>
+    <h3>Operasi Aritmatika</h3>
+    <p>+, −, ×, ÷, pangkat, akar, modulus, floor division</p>
+  </a>
+
+  <a href="{{ url_for('logic.logic_page') }}" class="feature-card glass-card sound-click">
+    <div class="feature-icon"><i class="bi bi-diagram-3-fill"></i></div>
+    <h3>Operator Logika</h3>
+    <p>AND, OR, NOT, XOR, NAND, NOR</p>
+  </a>
+
+  <a href="{{ url_for('transform.transform_page') }}" class="feature-card glass-card sound-click">
+    <div class="feature-icon"><i class="bi bi-arrow-left-right"></i></div>
+    <h3>Transformasi Bilangan</h3>
+    <p>Basis, suhu, mata uang, faktorial, Fibonacci</p>
+  </a>
+</section>
+
+{% include '_history_panel.html' %}
+{% endblock %}
