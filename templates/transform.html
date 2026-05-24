@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% set active_page = 'transform' %}
+{% set page_kicker = 'Transformasi Bilangan' %}
+{% set page_title = 'Transformasi Bilangan' %}
+{% block content %}
+<section class="glass-card form-panel">
+  <div class="section-head">
+    <div>
+      <h3>Transformasi Bilangan</h3>
+      <span>Konversi basis, suhu, mata uang, faktorial, dan Fibonacci.</span>
+    </div>
+  </div>
+
+  {% if error %}
+  <div class="alert alert-danger mt-3">{{ error }}</div>
+  {% endif %}
+
+  <form method="post" class="calc-form mt-4">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <label class="form-label">Mode</label>
+        <select name="mode" id="transformMode" class="form-select glass-input" required>
+          <option value="base" {% if form.mode=='base' %}selected{% endif %}>Konversi Basis</option>
+          <option value="temperature" {% if form.mode=='temperature' %}selected{% endif %}>Konversi Suhu</option>
+          <option value="currency" {% if form.mode=='currency' %}selected{% endif %}>Konversi Mata Uang</option>
+          <option value="factorial" {% if form.mode=='factorial' %}selected{% endif %}>Faktorial</option>
+          <option value="fibonacci" {% if form.mode=='fibonacci' %}selected{% endif %}>Fibonacci</option>
+        </select>
+      </div>
+
+      <div class="col-md-4" id="valueWrap">
+        <label class="form-label" id="valueLabel">Nilai</label>
+        <input name="value" id="transformValue" class="form-control glass-input" type="text" value="{{ form.value }}">
+      </div>
+
+      <div class="col-md-4" id="countWrap">
+        <label class="form-label">Jumlah Suku / n</label>
+        <input name="n" id="transformCount" class="form-control glass-input" type="number" min="1" step="1" value="{{ form.n }}">
+      </div>
+    </div>
+
+    <div class="row g-4 mt-1" id="baseFields">
+      <div class="col-md-6">
+        <label class="form-label">Dari Basis</label>
+        <select name="from_unit" class="form-select glass-input">
+          <option value="decimal" {% if form.from_unit=='decimal' %}selected{% endif %}>Decimal</option>
+          <option value="binary" {% if form.from_unit=='binary' %}selected{% endif %}>Binary</option>
+          <option value="octal" {% if form.from_unit=='octal' %}selected{% endif %}>Octal</option>
+          <option value="hexadecimal" {% if form.from_unit=='hexadecimal' %}selected{% endif %}>Hexadecimal</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Ke Basis</label>
+        <select name="to_unit" class="form-select glass-input">
+          <option value="decimal" {% if form.to_unit=='decimal' %}selected{% endif %}>Decimal</option>
+          <option value="binary" {% if form.to_unit=='binary' %}selected{% endif %}>Binary</option>
+          <option value="octal" {% if form.to_unit=='octal' %}selected{% endif %}>Octal</option>
+          <option value="hexadecimal" {% if form.to_unit=='hexadecimal' %}selected{% endif %}>Hexadecimal</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row g-4 mt-1 d-none" id="tempFields">
+      <div class="col-md-6">
+        <label class="form-label">Dari Suhu</label>
+        <select name="temp_from" class="form-select glass-input">
+          <option value="celsius" {% if form.temp_from=='celsius' %}selected{% endif %}>Celcius</option>
+          <option value="fahrenheit" {% if form.temp_from=='fahrenheit' %}selected{% endif %}>Fahrenheit</option>
+          <option value="kelvin" {% if form.temp_from=='kelvin' %}selected{% endif %}>Kelvin</option>
+          <option value="reamur" {% if form.temp_from=='reamur' %}selected{% endif %}>Reamur</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Ke Suhu</label>
+        <select name="temp_to" class="form-select glass-input">
+          <option value="celsius" {% if form.temp_to=='celsius' %}selected{% endif %}>Celcius</option>
+          <option value="fahrenheit" {% if form.temp_to=='fahrenheit' %}selected{% endif %}>Fahrenheit</option>
+          <option value="kelvin" {% if form.temp_to=='kelvin' %}selected{% endif %}>Kelvin</option>
+          <option value="reamur" {% if form.temp_to=='reamur' %}selected{% endif %}>Reamur</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row g-4 mt-1 d-none" id="currencyFields">
+      <div class="col-md-6">
+        <label class="form-label">Dari Mata Uang</label>
+        <select name="currency_from" class="form-select glass-input">
+          <option value="IDR" {% if form.currency_from=='IDR' %}selected{% endif %}>IDR</option>
+          <option value="USD" {% if form.currency_from=='USD' %}selected{% endif %}>USD</option>
+          <option value="EUR" {% if form.currency_from=='EUR' %}selected{% endif %}>EUR</option>
+          <option value="SGD" {% if form.currency_from=='SGD' %}selected{% endif %}>SGD</option>
+          <option value="MYR" {% if form.currency_from=='MYR' %}selected{% endif %}>MYR</option>
+          <option value="JPY" {% if form.currency_from=='JPY' %}selected{% endif %}>JPY</option>
+          <option value="GBP" {% if form.currency_from=='GBP' %}selected{% endif %}>GBP</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Ke Mata Uang</label>
+        <select name="currency_to" class="form-select glass-input">
+          <option value="IDR" {% if form.currency_to=='IDR' %}selected{% endif %}>IDR</option>
+          <option value="USD" {% if form.currency_to=='USD' %}selected{% endif %}>USD</option>
+          <option value="EUR" {% if form.currency_to=='EUR' %}selected{% endif %}>EUR</option>
+          <option value="SGD" {% if form.currency_to=='SGD' %}selected{% endif %}>SGD</option>
+          <option value="MYR" {% if form.currency_to=='MYR' %}selected{% endif %}>MYR</option>
+          <option value="JPY" {% if form.currency_to=='JPY' %}selected{% endif %}>JPY</option>
+          <option value="GBP" {% if form.currency_to=='GBP' %}selected{% endif %}>GBP</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn btn-neon mt-4 w-100 sound-click" type="submit"><i class="bi bi-arrow-right-circle"></i> Hitung Sekarang</button>
+  </form>
+</section>
+
+{% if result %}
+<section class="result-layout center-result">
+  <div class="glass-card result-card">
+    <div class="section-head">
+      <div>
+        <h3>Hasil</h3>
+        <span>{{ result.category }}</span>
+      </div>
+    </div>
+    <div class="result-value">{% if result.value is sequence and result.value is not string %}{{ result.value|join(', ') }}{% else %}{{ result.value }}{% endif %}</div>
+    <div class="result-formula">{{ result.formula }}</div>
+    <div class="steps-box">
+      <h4>Langkah Perhitungan</h4>
+      <ol class="mb-0">
+        {% for step in result.steps %}
+        <li>{{ step }}</li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% include '_history_panel.html' %}
+{% endblock %}
