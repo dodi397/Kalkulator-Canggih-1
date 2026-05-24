@@ -1,0 +1,32 @@
+<section class="glass-card history-section d-none" id="historyPanel">
+  <div class="section-head">
+    <div>
+      <h3>History Perhitungan</h3>
+      <span>Riwayat 10 perhitungan terakhir.</span>
+    </div>
+    <form method="post" action="{{ url_for('main.clear_history') }}">
+      <button class="btn btn-danger sound-click" type="submit">
+        <i class="bi bi-trash3"></i> Delete
+      </button>
+    </form>
+  </div>
+
+  {% if history %}
+  <div class="history-list compact">
+    {% for item in history %}
+    <div class="history-item">
+      <div>
+        <div class="history-meta">{{ item.time }} • {{ item.category }}</div>
+        <div class="history-expression">{{ item.expression }}</div>
+        {% if item.detail %}
+        <div class="history-detail">{{ item.detail }}</div>
+        {% endif %}
+      </div>
+      <div class="history-result">{{ item.result }}</div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty-state">Belum ada history perhitungan.</div>
+  {% endif %}
+</section>
