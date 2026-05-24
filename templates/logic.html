@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% set active_page = 'logic' %}
+{% set page_kicker = 'Operator Logika' %}
+{% set page_title = 'Operator Logika' %}
+{% block content %}
+<section class="glass-card form-panel">
+  <div class="section-head">
+    <div>
+      <h3>Operator Logika</h3>
+      <span>Input hanya menerima 0 dan 1.</span>
+    </div>
+  </div>
+
+  {% if error %}
+  <div class="alert alert-danger mt-3">{{ error }}</div>
+  {% endif %}
+
+  <form method="post" class="calc-form mt-4">
+    <div class="row g-4">
+      <div class="col-md-4" id="logicAwrap">
+        <label class="form-label">Nilai A</label>
+        <input name="a" id="logicA" class="form-control glass-input" type="number" min="0" max="1" value="{{ form.a }}" required>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Operator</label>
+        <select name="op" id="logicOp" class="form-select glass-input" required>
+          <option value="and" {% if form.op=='and' %}selected{% endif %}>AND</option>
+          <option value="or" {% if form.op=='or' %}selected{% endif %}>OR</option>
+          <option value="not" {% if form.op=='not' %}selected{% endif %}>NOT</option>
+          <option value="xor" {% if form.op=='xor' %}selected{% endif %}>XOR</option>
+          <option value="nand" {% if form.op=='nand' %}selected{% endif %}>NAND</option>
+          <option value="nor" {% if form.op=='nor' %}selected{% endif %}>NOR</option>
+        </select>
+      </div>
+      <div class="col-md-4" id="logicBwrap">
+        <label class="form-label">Nilai B</label>
+        <input name="b" id="logicB" class="form-control glass-input" type="number" min="0" max="1" value="{{ form.b }}">
+      </div>
+    </div>
+    <button class="btn btn-neon mt-4 w-100 sound-click" type="submit"><i class="bi bi-arrow-right-circle"></i> Hitung Sekarang</button>
+  </form>
+</section>
+
+{% if result %}
+<section class="result-layout center-result">
+  <div class="glass-card result-card">
+    <div class="section-head">
+      <div>
+        <h3>Hasil</h3>
+        <span>{{ result.category }}</span>
+      </div>
+    </div>
+    <div class="result-value">{{ result.value }}</div>
+    <div class="result-formula">{{ result.formula }}</div>
+    <div class="steps-box">
+      <h4>Langkah Perhitungan</h4>
+      <ol class="mb-0">
+        {% for step in result.steps %}
+        <li>{{ step }}</li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% include '_history_panel.html' %}
+{% endblock %}
