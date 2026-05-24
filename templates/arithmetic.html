@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% set active_page = 'arith' %}
+{% set page_kicker = 'Operasi Aritmatika' %}
+{% set page_title = 'Operasi Aritmatika' %}
+{% block content %}
+<section class="glass-card form-panel">
+  <div class="section-head">
+    <div>
+      <h3>Operasi Aritmatika</h3>
+      <span>Setiap hasil menampilkan rumus dan langkah detail.</span>
+    </div>
+  </div>
+
+  {% if error %}
+  <div class="alert alert-danger mt-3">{{ error }}</div>
+  {% endif %}
+
+  <form method="post" class="calc-form mt-4">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <label class="form-label">Angka Pertama</label>
+        <input name="a" class="form-control glass-input" type="number" step="any" value="{{ form.a }}" required>
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">Operator</label>
+        <select name="op" id="arithOp" class="form-select glass-input" required>
+          <option value="add" {% if form.op=='add' %}selected{% endif %}>+</option>
+          <option value="sub" {% if form.op=='sub' %}selected{% endif %}>−</option>
+          <option value="mul" {% if form.op=='mul' %}selected{% endif %}>×</option>
+          <option value="div" {% if form.op=='div' %}selected{% endif %}>÷</option>
+          <option value="pow" {% if form.op=='pow' %}selected{% endif %}>^</option>
+          <option value="sqrt" {% if form.op=='sqrt' %}selected{% endif %}>√</option>
+          <option value="mod" {% if form.op=='mod' %}selected{% endif %}>%</option>
+          <option value="floordiv" {% if form.op=='floordiv' %}selected{% endif %}>//</option>
+        </select>
+      </div>
+      <div class="col-md-4" id="arithSecondWrap">
+        <label class="form-label">Angka Kedua</label>
+        <input name="b" class="form-control glass-input" type="number" step="any" value="{{ form.b }}">
+      </div>
+    </div>
+    <button class="btn btn-neon mt-4 w-100 sound-click" type="submit"><i class="bi bi-arrow-right-circle"></i> Hitung Sekarang</button>
+  </form>
+</section>
+
+{% if result %}
+<section class="result-layout center-result">
+  <div class="glass-card result-card">
+    <div class="section-head">
+      <div>
+        <h3>Hasil</h3>
+        <span>{{ result.category }}</span>
+      </div>
+    </div>
+    <div class="result-value">{{ result.value }}</div>
+    <div class="result-formula">{{ result.formula }}</div>
+    <div class="steps-box">
+      <h4>Langkah Perhitungan</h4>
+      <ol class="mb-0">
+        {% for step in result.steps %}
+        <li>{{ step }}</li>
+        {% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% include '_history_panel.html' %}
+{% endblock %}
