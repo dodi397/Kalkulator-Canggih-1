@@ -140,14 +140,20 @@ body.app-shell{
   padding:22px;
 }
 .hero{
-  display:flex;justify-content:space-between;align-items:center;gap:18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  gap:18px;
   margin-bottom:22px;
 }
 .hero-copy h2{
   font-family:'Space Grotesk',sans-serif;
   font-size:2.4rem;
   font-weight:700;
-  margin:0 0 10px;
+  margin:0 auto;
+  max-width:760px;
 }
 .hero-copy p{margin:0;color:var(--muted);max-width:760px;font-size:1.03rem}
 .hero-badge{
