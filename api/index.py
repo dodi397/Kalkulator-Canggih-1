@@ -13,9 +13,9 @@ app.register_blueprint(arithmetic_bp, url_prefix="/aritmatika")
 app.register_blueprint(logic_bp, url_prefix="/logika")
 app.register_blueprint(transform_bp, url_prefix="/transformasi")
 
-@app.before_request
-def ensure_history():
-    init_session_history()
+#@app.before_request
+#def ensure_history():
+#    init_session_history()
 
 @app.route("/")
 def home():
