@@ -12,10 +12,10 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     try:
-        from calculator_app.routes_main import main_bp
-        from calculator_app.routes_arithmetic import arithmetic_bp
-        from calculator_app.routes_logic import logic_bp
-        from calculator_app.routes_transform import transform_bp
+        from api.calculator_app.routes_main import main_bp
+        from api.calculator_app.routes_arithmetic import arithmetic_bp
+        from api.calculator_app.routes_logic import logic_bp
+        from api.calculator_app.routes_transform import transform_bp
 
         app.register_blueprint(main_bp)
         app.register_blueprint(arithmetic_bp)
