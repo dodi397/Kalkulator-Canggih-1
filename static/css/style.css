@@ -294,8 +294,10 @@ body.app-shell{
 
   .hero{
     flex-direction: column !important;
-    align-items: flex-start !important;
+    justify-content: center !important;
+    text-align: center !important;
     padding: 18px !important;
+    margin-bottom: 18px !important;
   }
 
   .hero-copy h2{
