@@ -115,10 +115,23 @@ body.app-shell{
 .sidebar-footer{margin-top:auto;padding-top:18px}
 .main-content{min-width:0}
 .topbar{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:20px 22px;margin-bottom:22px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px 22px;
+  margin-bottom:22px;
+  position:relative;
+  text-align:center;
 }
-.topbar-left{display:flex;align-items:center;gap:16px}
+
+.topbar-left{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  width:100%;
+  text-align:center;
+}
 .page-title{
   margin:0;
   font-family:'Space Grotesk',sans-serif;
@@ -126,7 +139,13 @@ body.app-shell{
   font-weight:700;
 }
 .page-kicker{text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;margin-bottom:4px}
-.topbar-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.topbar-actions{
+  position:absolute;
+  right:22px;
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
 .btn-theme,.btn-neon{
   color:white;border:none;
   background:linear-gradient(135deg,var(--accent1),#8b5cf6 35%,var(--accent2));
@@ -183,16 +202,29 @@ body.app-shell{
   opacity:.25; pointer-events:none;
 }
 .feature-icon{
-  width:56px;height:56px;border-radius:16px;display:grid;place-items:center;
-  background:rgba(255,255,255,.08); border:1px solid var(--border); font-size:1.5rem;
+  width:56px;
+  height:56px;
+  border-radius:16px;
+  display:grid;
+  place-items:center;
+  background:rgba(255,255,255,.08);
+  border:1px solid var(--border);
+  font-size:1.5rem;
   margin-bottom:18px;
+  margin-left:auto;
+  margin-right:auto;
 }
 .feature-card h3{
   font-family:'Space Grotesk',sans-serif;
   font-size:1.3rem;
   font-weight:700;
+  text-align:center;
 }
-.feature-card p{margin:0;color:var(--muted)}
+.feature-card p{
+  margin:0;
+  color:var(--muted);
+  text-align:center;
+}
 .feature-a{background:linear-gradient(180deg, rgba(31,41,55,.55), rgba(124,58,237,.12))}
 .feature-b{background:linear-gradient(180deg, rgba(31,41,55,.55), rgba(168,85,247,.12))}
 .feature-c{background:linear-gradient(180deg, rgba(31,41,55,.55), rgba(34,197,94,.10))}
@@ -266,7 +298,12 @@ body.app-shell{
 .compact .history-expression{font-size:.96rem}
 .compact .history-item{align-items:flex-start}
 .compact .history-result{white-space:nowrap}
-.topbar .btn{padding:10px 16px}
+.topbar .btn{
+  padding:6px 12px;
+  font-size:13px;
+  border-radius:12px;
+  min-height:auto;
+}
 @media (max-width: 992px){
   .app-layout{
     grid-template-columns: 1fr !important;
@@ -279,18 +316,39 @@ body.app-shell{
   }
 
   .topbar{
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    padding: 16px !important;
-  }
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  padding: 16px !important;
+}
 
-  .topbar-actions{
-    width: 100% !important;
-  }
+.topbar-left{
+width:100% !important;
+display:flex !important;
+align-items:center !important;
+justify-content:center !important;
+position:relative !important;
+text-align:center !important;
+}
 
-  .topbar-actions .btn{
-    flex: 1 !important;
-  }
+.topbar-left .btn{
+position:absolute;
+left:0;
+top:50%;
+transform:translateY(-50%);
+}
+
+.topbar-actions{
+  position: static !important;
+  width: auto !important;
+  margin-top: 12px !important;
+  justify-content: center !important;
+}
+
+.topbar-actions .btn{
+  flex: unset !important;
+}
 
   .hero{
     flex-direction: column !important;
@@ -380,8 +438,6 @@ html[data-theme="light"] .form-select option{
     background-color: white;
     color: black;
 }
-
-/* STYLE.CSS */
 
 #matrix-bg{
 position:fixed;
