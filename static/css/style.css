@@ -164,6 +164,7 @@ body.app-shell{
   justify-content: center !important;
   text-align: center !important;
   padding: 18px !important;
+  margin-top:16px;
 }
 .hero-badge{
   margin: 0 auto !important;
@@ -182,10 +183,15 @@ body.app-shell{
 }
 .hero-copy p{margin:0;color:var(--muted);max-width:760px;font-size:1.03rem}
 .hero-badge{
-  padding:14px 18px;border-radius:999px;
+  padding:14px 18px;
+  border-radius:999px;
   background:linear-gradient(135deg, rgba(124,58,237,.18), rgba(34,211,238,.16));
-  border:1px solid var(--border); display:flex; gap:10px; align-items:center;
+  border:1px solid var(--border);
+  display:flex;
+  gap:10px;
+  align-items:center;
   white-space:nowrap;
+  margin-top:14px;
 }
 .feature-grid{
   display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:22px;
@@ -316,39 +322,39 @@ body.app-shell{
   }
 
   .topbar{
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  text-align: center !important;
-  padding: 16px !important;
-}
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 16px !important;
+    margin-top:14px !important;
+  }
+  .topbar-left{
+    width:100% !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    position:relative !important;
+    text-align:center !important;
+  }
 
-.topbar-left{
-width:100% !important;
-display:flex !important;
-align-items:center !important;
-justify-content:center !important;
-position:relative !important;
-text-align:center !important;
-}
+  .topbar-left .btn{
+    position:absolute;
+    left:0;
+    top:50%;
+    transform:translateY(-50%);
+  }
 
-.topbar-left .btn{
-position:absolute;
-left:0;
-top:50%;
-transform:translateY(-50%);
-}
+  .topbar-actions{
+    position: static !important;
+    width: auto !important;
+    margin-top: 12px !important;
+    justify-content: center !important;
+  }
 
-.topbar-actions{
-  position: static !important;
-  width: auto !important;
-  margin-top: 12px !important;
-  justify-content: center !important;
-}
-
-.topbar-actions .btn{
-  flex: unset !important;
-}
+  .topbar-actions .btn{
+    flex: unset !important;
+  }
 
   .hero{
     flex-direction: column !important;
