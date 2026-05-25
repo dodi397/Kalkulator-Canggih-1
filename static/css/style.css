@@ -381,3 +381,18 @@ html[data-theme="light"] .form-select option{
     color: black;
 }
 
+/* STYLE.CSS */
+
+#matrix-bg{
+position:fixed;
+inset:0;
+width:100%;
+height:100%;
+z-index:-10;
+background:radial-gradient(circle at center,#0b1023 0%,#050816 45%,#02030a 100%);
+}
+
+.app-layout{
+position:relative;
+z-index:2;
+}
