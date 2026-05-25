@@ -113,7 +113,7 @@ def factorial_steps(n):
 
 def fibonacci_series(n):
     if n <= 0:
-        raise ValueError("Jumlah deret Fibonacci harus lebih dari 0.")
+        raise ValueError("Jumlah Fibonacci harus lebih dari 0.")
     series = []
     a, b = 0, 1
     for _ in range(n):
