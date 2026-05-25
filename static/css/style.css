@@ -269,13 +269,35 @@ body.app-shell{
     -webkit-appearance: none !important;
     -moz-appearance: none !important;
 
-    background-color: var(--bg-input) !important;
-    color: var(--text-main) !important;
+    background: var(--input) !important;
+    background-color: var(--input) !important;
+
+    color: var(--text) !important;
 
     border: 1px solid var(--border) !important;
+    border-radius: 14px !important;
+
+    box-shadow: none !important;
+
+    color-scheme: dark light;
+}
+
+html[data-theme="light"] .form-select{
+    background: rgba(17,24,39,.04) !important;
+    color: #111827 !important;
+}
+
+html:not([data-theme="light"]) .form-select{
+    background: rgba(255,255,255,.06) !important;
+    color: #eef2ff !important;
 }
 
 .form-select option{
-    background: #111827 !important;
-    color: #ffffff !important;
+    background-color: #07122b;
+    color: white;
+}
+
+html[data-theme="light"] .form-select option{
+    background-color: white;
+    color: black;
 }
