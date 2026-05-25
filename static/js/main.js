@@ -163,13 +163,13 @@ const rain=[];
 
 for(let i=0;i<columns;i++){
 
-rain[i]=Math.random()*-100;
+rain[i]+=0.2;
 
 }
 
 const nodes=[];
 
-for(let i=0;i<160;i++){
+for(let i=0;i<70;i++){
 
 nodes.push({
 
@@ -204,7 +204,7 @@ ctx.fillRect(0,0,w,h);
 
 function drawGrid(){
 
-gridOffset+=0.4;
+gridOffset+=0.15;
 
 const gridSize=40;
 
@@ -242,7 +242,7 @@ ctx.stroke();
 
 function drawFlowLines(){
 
-for(let i=0;i<12;i++){
+for(let i=0;i<5;i++){
 
 const y=(i*120+gridOffset*8)%h;
 
@@ -284,7 +284,7 @@ const y=rain[i]*fontSize;
 
 ctx.fillStyle=`hsla(${hue},100%,70%,0.95)`;
 
-ctx.shadowBlur=18;
+ctx.shadowBlur=6;
 
 ctx.shadowColor=`hsl(${hue},100%,60%)`;
 
@@ -327,7 +327,7 @@ ctx.arc(n.x,n.y,n.size,0,Math.PI*2);
 
 ctx.fillStyle=`hsla(${hue},100%,70%,1)`;
 
-ctx.shadowBlur=20;
+ctx.shadowBlur=8;
 
 ctx.shadowColor=`hsl(${hue},100%,60%)`;
 
@@ -349,7 +349,7 @@ const dy=nodes[i].y-nodes[j].y;
 
 const dist=Math.sqrt(dx*dx+dy*dy);
 
-if(dist<120){
+if(dist<70){
 
 ctx.beginPath();
 
