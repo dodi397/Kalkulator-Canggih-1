@@ -153,7 +153,7 @@ body.app-shell{
   font-size:2.4rem;
   font-weight:700;
   margin:0 auto;
-  max-width:760px;
+  max-width:768px;
 }
 .hero-copy p{margin:0;color:var(--muted);max-width:760px;font-size:1.03rem}
 .hero-badge{
